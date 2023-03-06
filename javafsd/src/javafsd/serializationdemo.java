@@ -1,12 +1,26 @@
 package javafsd;
 import java.io.Serializable;
 import java.io.FileOutputStream;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 public class serializationdemo {
 
 	public static void main(String[] args) {
-		Employee e1= new Employee(1,"Mark",10000,"AA343");
-		System.out.print(e1);
+ SerializationDemoSimplified();
+ DeserializationDemo();
+	}
+	private static void DeserializationDemo() {
+		try (FileInputStream fis = new FileInputStreaam("");
+		ObjectInputStream ois=new ObjectInputstream(fis);){
+		Employee emp=(Employee)ois.readObject();
+		System.out.print("Object Deserialized" +emp);
+		}catch(FileNotFoundException e) {
+			
+		}
 	}
 
 }

@@ -1,6 +1,8 @@
 package javafsd;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Arraylistdemo {
 public static void main(String[] args) {
@@ -18,5 +20,13 @@ public static void demo() {
 	System.out.println(alist);
 	int x= alist.indexOf(30);
 	System.out.println(x);
+	Collections.sort(alist, new Mycomparator());
+	System.out.println(alist);
 }
+}
+class Mycomparator implements Comparator<Integer>{
+	@Override
+	public int compare(int i1,int i2) {
+		return i1.compareTo(i2);
+	}
 }
