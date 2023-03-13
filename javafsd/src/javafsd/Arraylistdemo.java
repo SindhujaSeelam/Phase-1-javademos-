@@ -20,13 +20,16 @@ public static void demo() {
 	System.out.println(alist);
 	int x= alist.indexOf(30);
 	System.out.println(x);
+	alist.add(10);
 	Collections.sort(alist, new Mycomparator());
 	System.out.println(alist);
 }
 }
 class Mycomparator implements Comparator<Integer>{
+	
+
 	@Override
-	public int compare(int i1,int i2) {
+	public int compare(Integer i1, Integer i2) {
 		return i1.compareTo(i2);
 	}
 }

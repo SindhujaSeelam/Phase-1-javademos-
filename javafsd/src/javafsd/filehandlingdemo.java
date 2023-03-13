@@ -5,14 +5,18 @@ import java.io.FileOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 public class filehandlingdemo {
-	public static void main(String[] args) {
-		fileInputStreamDemo();		
+	public static void main(String[] args) throws IOException {
+		fileInputStreamDemo();	
+		fileOutputStream();
+		fileInputStreamDemo();
 	}
-	static void fileInputStreamDemo() {
+	static void fileInputStreamDemo() throws IOException {
 		int i;
 		File myfile = new File("file.txt");
+		myfile.createNewFile();
 		try {
 			FileInputStream fis= new FileInputStream(myfile);
+			
 			System.out.print("File Opened");
 			while((i=fis.read())!=-1) {
 				System.out.print((char)i);

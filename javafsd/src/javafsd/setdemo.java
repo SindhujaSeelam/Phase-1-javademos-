@@ -21,11 +21,11 @@ hashsetdemo();
 	}
 	System.out.println(list);
 	Set<Integer> set = new HashSet<>(list);
-	System.out.println(set);
+	System.out.println("Hash set" +set);
 	Set<Integer> set2 = new LinkedHashSet<>(list);
-	System.out.println(set2);
+	System.out.println("Linked set" + set2);
 	Set<Integer> set3 = new TreeSet<>(list);
-	System.out.println(set3);
+	System.out.println("Tree set" +set3);
 	
 }
 }

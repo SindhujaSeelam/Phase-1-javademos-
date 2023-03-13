@@ -3,7 +3,9 @@ package javafsd;
 public class DaemonThread {
 public static void main(String[] args) {
 	worker w = new worker();
+	
 	w.setDaemon(true);
+	w.start();
 	System.out.println(w.isDaemon());
 }
 }

@@ -16,7 +16,7 @@ class FirstResource{
 		}catch(InterruptedException e) {
 			e.printStackTrace();
 		}
-		Utils.printmesage("Invoking SecondResource.method2");
+		System.out.println("Invoking SecondResource.method2");
 		sr.method2();
 	}
 	void method2() {

@@ -16,6 +16,7 @@ public class TreeSetDemo {
         iset2.add("William");
         iset2.add("Robert");
         iset2.add("Zoe");
+        iset2.add("Zoe");
         System.out.println(iset2);
 	}
 
