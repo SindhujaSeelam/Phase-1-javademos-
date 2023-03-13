@@ -166,7 +166,7 @@ static void deletemore(LinkedList<String> list) {
 		    }
 		    else {
 		    	System.out.println("Enter a valid input");
-		    	n=s.next();
+		    	//n=s.next();
 		    }}
 	}
 	 
@@ -175,7 +175,9 @@ static void search(LinkedList<String> list) {
 	try (Scanner s = new Scanner(System.in)) {
 		System.out.println("Searching a file");
 		System.out.println("Enter the name of the file");
-		String name=s.next();
+		String name;
+		while(true) {
+		name=s.next();
 		if(list.contains(name)) {
 			System.out.println("File is present\n");
 			//display(list);
@@ -185,18 +187,20 @@ static void search(LinkedList<String> list) {
 			System.out.println("Files which are present are ");
 			for(String file:list) {
 				System.out.println(file);}
+			searchmore(list);
 
-		}
+
+		}}
 	}
-	searchmore(list);
 }
 static void searchmore(LinkedList<String> list) {
 	try (Scanner s = new Scanner(System.in)) {
 		System.out.println("Want to search more files?");
 		System.out.println("1.Search file");
 		System.out.println("2.Menu\n");
-		String n=s.next();
+		String n;
 		while(true) {
+			n=s.next();
 		if(n.equals("1")) {
 			search(list);
 		}
@@ -205,7 +209,7 @@ static void searchmore(LinkedList<String> list) {
 		}
 		else {
 			System.out.println("Enter valid input");
-			n=s.next();
+			//n=s.next();
 		}	}
 	}
 }
