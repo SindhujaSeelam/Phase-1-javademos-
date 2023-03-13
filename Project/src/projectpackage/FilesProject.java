@@ -9,11 +9,11 @@ public static void main(String[] args) {
 	
 	//Scanner sc=new Scanner(System.in);
 	System.out.println("Welcome To The Apllication \nThis application is used to manage the files \n");
-	System.out.println(".....Developed by Seelam Sindhuja\n\n");
+	System.out.println(".....Developed by Seelam Sindhuja[EmpId:10840]\n\n");
 	LinkedList<String> list= new LinkedList<>();
 	list.add("File1");
 	list.add("File2");
-	menu(list);
+	mainmenu(list);
 	
 }
 
@@ -23,10 +23,10 @@ static void menu(LinkedList<String> list) {
 		try {
 		
 		System.out.println("Enter any one of the below option to continue");
-		System.out.println("1.List out the files");
-		System.out.println("2.Add a new file");
-		System.out.println("3.Delete a file");
-		System.out.println("4.Search a file");
+		System.out.println("1.Add a new file");
+		System.out.println("2.Delete a file");
+		System.out.println("3.Search a file");
+		System.out.println("4.Main menu");
 		input=s.next();
 		inputdis(input,list);
 		}
@@ -38,20 +38,49 @@ static void menu(LinkedList<String> list) {
 		inputdis(input,list);
 	}
 }
-static void inputdis(String input,LinkedList<String> list) {
+static void mainmenu(LinkedList<String> list) {
+	try (Scanner s = new Scanner(System.in)) {
+		System.out.println("1.Retreive files in ascending order");
+		System.out.println("2.File handling menu");
+		System.out.println("3.Exit application");
+		String input=s.next();
+		inpdis(input,list);
+	}
+}
+static void inpdis(String input,LinkedList<String> list) {
 	try (Scanner s = new Scanner(System.in)) {
 		switch(input) {
 		case "1":
 			display(list);
 			break;
 		case "2":
-			add(list);
+			menu(list);
 			break;
 		case "3":
+			System.exit(0);
+			
+		default :		
+			System.out.println("Enter valid input");
+			String input1=s.next();
+			inputdis(input1,list);
+			break;
+		}
+	}
+}
+static void inputdis(String input,LinkedList<String> list) {
+	try (Scanner s = new Scanner(System.in)) {
+		switch(input) {
+		case "1":
+			add(list);
+			break;
+		case "2":
 			delete(list);
 			break;
-		case "4":
+		case "3":
 			search(list);
+			break;
+		case "4":
+			mainmenu(list);
 			break;
 		default :		
 			System.out.println("Enter valid input");
@@ -63,6 +92,7 @@ static void inputdis(String input,LinkedList<String> list) {
 }
 static void display(LinkedList<String> list) {
 	try (Scanner s = new Scanner(System.in)) {
+		Collections.sort(list);
 		for(String file:list) {
 		System.out.println(file);}
 		System.out.println("Press 0 to exit to menu\n");
@@ -70,7 +100,7 @@ static void display(LinkedList<String> list) {
 		option=s.next();
 		while(true) {
 		if(option.equals("0")) {
-			menu(list);
+			mainmenu(list);
 		}
 		else {
 			//System.out.println(option);
@@ -97,8 +127,6 @@ static void display(LinkedList<String> list) {
 			if(list.add(name)) {
 				System.out.println("File added successfully....\n");
 				Collections.sort(list);
-				for(String file:list) {
-					System.out.println(file);}
 				addmore(list);
 			}}}
 		}
@@ -109,9 +137,9 @@ static void display(LinkedList<String> list) {
  static void addmore(LinkedList<String> list) {
 	 String n;
 	 try (Scanner s = new Scanner(System.in)) {
-		System.out.println("Want to add more files ?");
+		System.out.println("\nWant to add more files ?");
 			System.out.println("1.Add file");
-			System.out.println("2.Exit to main menu\n");
+			System.out.println("2.Exit to File handling menu\n");
 			while(true) {
 		    n=s.next();
 		    if(n.equals("1")) {
@@ -137,11 +165,7 @@ static void delete(LinkedList<String> list) {
 
 		if(list.remove(name)) {
 			System.out.println("File deleted successfully...\n");
-			for(String file:list) {
-				System.out.println(file);}
 			deletemore(list);
-
-			
 		}
 		else {
 			System.out.println("Given file is not present");
@@ -153,9 +177,9 @@ static void delete(LinkedList<String> list) {
 static void deletemore(LinkedList<String> list) {
 	 String n;
 	 try (Scanner s = new Scanner(System.in)) {
-		System.out.println("Want to delete more files ?");
+		System.out.println("\nWant to delete more files ?");
 			System.out.println("1.Delete file");
-			System.out.println("2.Exit to main menu\n");
+			System.out.println("2.Exit to File handling menu\n");
 			while(true) {
 		    n=s.next();
 		    if(n.equals("1")) {
@@ -181,12 +205,10 @@ static void search(LinkedList<String> list) {
 		if(list.contains(name)) {
 			System.out.println("File is present\n");
 			//display(list);
+			searchmore(list);
 		}
 		else {
-			System.out.println("File not found");
-			System.out.println("Files which are present are ");
-			for(String file:list) {
-				System.out.println(file);}
+			System.out.println("File not found\n");
 			searchmore(list);
 
 
@@ -197,7 +219,7 @@ static void searchmore(LinkedList<String> list) {
 	try (Scanner s = new Scanner(System.in)) {
 		System.out.println("Want to search more files?");
 		System.out.println("1.Search file");
-		System.out.println("2.Menu\n");
+		System.out.println("2.Exit to File handling menu \n");
 		String n;
 		while(true) {
 			n=s.next();
